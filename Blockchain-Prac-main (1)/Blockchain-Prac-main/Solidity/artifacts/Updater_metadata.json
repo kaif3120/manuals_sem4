@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "updateBalance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain/Mapping.sol": "Updater"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain/Mapping.sol": {
+			"keccak256": "0xb1a825b8d48bda9019b9ca509acc71df83ce200678a7b7c12b0b80529d62ffbf",
+			"urls": [
+				"bzzr://35a6d0c9cea8bd84b8c51283ca6bacc8dbaf2e030c36cd7dae88699d362ee26d"
+			]
+		}
+	},
+	"version": 1
+}

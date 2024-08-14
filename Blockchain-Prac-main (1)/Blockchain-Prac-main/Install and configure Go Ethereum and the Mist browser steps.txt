@@ -1,0 +1,21 @@
+Installing GETH (Go Ethereum)
+Step 1: Go to website https://geth.ethereum.org/downloads/
+Step 2: From stable releases Geth 1.5.8 (kind = installer)
+Step 3: once downloaded run it then click next
+Step 4: Select Geth and Development tools click next
+Step 5: Select location to install click next
+Step 6: Once Installation is finished Click Close and its done
+Installing Mist Browser
+Step 1: https://github.com/ethereum/mist/releases
+Step 2: Under Ethereum Wallet and Mist 0.8.9 - "The Wizard" download mist-installer-0-8-
+9.exe
+Step 3: For installation click, I agree -> next -> install
+Run Mist
+Step 1: Open the Mist from the start menu
+Step 2: It will start downloading Blockchain data once you open it
+Step 3: Once it finishes downloading it is ready to use
+Run Geth
+Step 1: Open CMD
+Step 2: Type GETH and press enter
+Step 3: After it finishes loading press ctrl+c to exit the process.
+Step 4: Now it's ready to use

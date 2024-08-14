@@ -1,0 +1,68 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "a",
+						"type": "bool"
+					},
+					{
+						"name": "b",
+						"type": "bool"
+					}
+				],
+				"name": "logic",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain/Logical operator.sol": "LogicalOperator"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain/Logical operator.sol": {
+			"keccak256": "0xd85560c4c8f07f79a7f051863b8578999a244fbd755aec715c667e58de4c800f",
+			"urls": [
+				"bzzr://938d81e5f1fc78337a2a1e6608c04c6171d2eb3ef46f53139f494922b0ac63a2"
+			]
+		}
+	},
+	"version": 1
+}

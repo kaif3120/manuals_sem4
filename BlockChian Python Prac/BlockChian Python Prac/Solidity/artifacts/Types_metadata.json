@@ -1,0 +1,55 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "array_example",
+				"outputs": [
+					{
+						"name": "",
+						"type": "int256[5]"
+					},
+					{
+						"name": "",
+						"type": "uint256[6]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain/arrays.sol": "Types"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain/arrays.sol": {
+			"keccak256": "0x0d64ec7bacac397238235145fb0dc7c42f532060c8d8e87099ecaea622d935d4",
+			"urls": [
+				"bzzr://1ccdf8de9d8ac1892a5f6dc87eede05860b20bee9bd9f1375f837b02957c0be4"
+			]
+		}
+	},
+	"version": 1
+}

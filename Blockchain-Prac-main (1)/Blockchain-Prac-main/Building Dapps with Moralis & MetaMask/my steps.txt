@@ -1,0 +1,54 @@
+1. install node.js	https://nodejs.org/en
+
+2. create a new folder on desktop: name 'MoralisDApp'
+3. open that folder and click on the directory (something like 'C:\Users\vachh\Desktop\MoralisDApp) and type 'cmd' and enter
+
+4. run this 'npm install -g http-server'
+
+5.Create a html file with a name 'index.html' 
+
+6.copy the code given in other file name 'index.txt' in the same folder
+
+7. go to moralis website https://moralis.io/ and create an account
+
+8. create a new server (free wala) and note down the server URL and application ID.
+
+9. Create the Cloud Function:
+In the Moralis dashboard, navigate to the "Cloud Functions" section.
+Create a new Cloud Function and name it getAvgGas.
+Copy and paste the following code into the Cloud Function editor:
+
+Moralis.Cloud.define("getAvgGas", async function (request) {
+    const query = new Moralis.Query("EthTransactions");
+    const pipeline = [
+        {
+            group: {
+                objectId: "$from_address",
+                avgGas: { $avg: { $divide: ["$gas_price", 1000000000] } },
+            },
+        },
+        { sort: { avgGas: -1 } },
+        { limit: 10 },
+    ];
+    const results = await query.aggregate(pipeline, { useMasterKey: true });
+    return results;
+});
+
+10.Save the Cloud Function.
+
+11. Run Your DApp
+Start a Local Server (if you installed http-server):
+In your terminal, navigate to your project folder and run: http-server
+
+This will start a local server, usually at http://localhost:8080.
+12. Open Your DApp:
+Open your web browser and go to http://localhost:8080/index.html (or the appropriate URL based on your local server).
+13. Test Your DApp
+Login with MetaMask:
+14. Click the "Moralis Login" button. This will prompt you to connect your MetaMask wallet. Make sure you have MetaMask installed and set up with some Ethereum.
+15. View Gas Stats:
+After logging in, the DApp will fetch and display the average gas prices based on the transactions in the Moralis database.
+16. Logout:
+You can log out using the "Logout" button.
+
+

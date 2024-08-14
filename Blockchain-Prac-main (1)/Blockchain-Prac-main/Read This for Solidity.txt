@@ -1,0 +1,63 @@
+####Link for Remix###########
+
+
+https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.5.0+commit.1d4f565a.js&language=Solidity
+
+######################################
+
+
+1. Implement and demonstrate the use of the following in Solidity:
+Libraries, Assembly, Events, Error handling.
+
+Libraries -- Not correct ouput
+Assembly -- Not correct output
+Events -- No code
+Error handling -- Khud se dala code
+
+---------------------------------------------------------------------------------
+
+2.Implement and demonstrate the use of the following in Solidity:
+Withdrawal Pattern, Restricted Access.
+
+Withdrawal pattern -- khud se dala
+Restricted Access -- khud se dala
+
+--------------------------------------------------------------------------------------
+
+3.Implement and demonstrate the use of the following in Solidity:
+Contracts, Inheritance, Constructors, Abstract Contracts, Interfaces
+
+Contracts: works
+Inheritance: works
+Construtors: Cant find
+Abstract Constructor: Cant Find
+Interfaces: Not working
+
+-----------------------------------------------------------------------------------------
+
+Implement and demonstrate the use of the following in Solidity:
+Variable, Operators, Loops, Decision Making, Strings, Arrays,
+
+all works
+
+-------------------------------------------------------------------
+
+Implement and demonstrate the use of the following in Solidity:
+Enums, Structs, Mappings, Conversions, Ether Units, Special Variables
+
+Ether units -- khud se dala
+Special variables -- khud se dala
+
+------------------------------------------------------------------
+
+Implement and demonstrate the use of the following in Solidity:
+Fallback Function, Function Overloading, Mathematical functions, Cryptographic functions.
+
+all works 
+----------------------------------------------------------------------
+
+Implement and demonstrate the use of the following in Solidity:
+Functions, Function Modifiers, View functions, Pure Functions
+
+all works
+==========================================================================

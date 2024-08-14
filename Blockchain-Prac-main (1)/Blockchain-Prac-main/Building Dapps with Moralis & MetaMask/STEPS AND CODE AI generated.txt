@@ -1,0 +1,174 @@
+To perform the practical involving building a DApp with Moralis and MetaMask, follow these step-by-step instructions. This guide assumes you have basic knowledge of HTML, JavaScript, and working with APIs.
+
+## Step 1: Set Up Your Development Environment
+
+1. **Install Node.js**: If you don't have Node.js installed, download and install it from [Node.js official website](https://nodejs.org/).
+
+2. **Create a Project Folder**:
+   - Create a new folder for your project. You can name it something like `MoralisDApp`.
+   - Open your terminal or command prompt and navigate to your project folder.
+
+3. **Set Up a Local Server** (Optional):
+   - For testing purposes, you can use a simple HTTP server. You can install `http-server` globally using npm:
+     ```bash
+     npm install -g http-server
+     ```
+
+## Step 2: Create the HTML File
+
+1. **Create `index.html`**:
+   - Inside your project folder, create a file named `index.html`.
+   - Copy and paste the following code into `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical No: 08 - Building Dapps with Moralis & MetaMask</title>
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+</head>
+<body>
+    <h1>Moralis Gas Stats</h1>
+    <button id="btn-login">Moralis Login</button>
+    <button id="btn-logout">Logout</button>
+    <button id="btn-get-stats">Refresh Stats</button>
+    <!-- stats will go here -->
+    <ul id="gas-stats"></ul>
+
+    <script>
+        // Connect to Moralis server
+        const serverUrl = "https://gjgjzccgef6d.usemoralis.com:2053/server";
+        const appId = "8IqxNy07hfIUf9lc3P27wEPcup6uaIj592FKIu1D";
+        Moralis.start({ serverUrl, appId });
+
+        // LOG IN WITH METAMASK
+        async function login() {
+            let user = Moralis.User.current();
+            if (!user) {
+                user = await Moralis.authenticate();
+            }
+            console.log("logged in user:", user);
+            getStats();
+        }
+
+        // LOG OUT
+        async function logOut() {
+            await Moralis.User.logOut();
+            console.log("logged out");
+        }
+
+        // Bind button click handlers
+        document.getElementById("btn-login").onclick = login;
+        document.getElementById("btn-logout").onclick = logOut;
+        document.getElementById("btn-get-stats").onclick = getStats;
+
+        // Refresh stats
+        function getStats() {
+            const user = Moralis.User.current();
+            if (user) {
+                getUserTransactions(user);
+            }
+            getAverageGasPrices();
+        }
+
+        // HISTORICAL TRANSACTIONS
+        async function getUserTransactions(user) {
+            // Create query
+            const query = new Moralis.Query("EthTransactions");
+            query.equalTo("from_address", user.get("ethAddress"));
+            // Subscribe to query updates
+            const subscription = await query.subscribe();
+            handleNewTransaction(subscription);
+            // Run query
+            const results = await query.find();
+            console.log("user transactions:", results);
+        }
+
+        // REAL-TIME TRANSACTIONS
+        async function handleNewTransaction(subscription) {
+            // Log each new transaction
+            subscription.on("create", function (data) {
+                console.log("new transaction: ", data);
+            });
+        }
+
+        // CLOUD FUNCTION
+        async function getAverageGasPrices() {
+            const results = await Moralis.Cloud.run("getAvgGas");
+            console.log("average user gas prices:", results);
+            renderGasStats(results);
+        }
+
+        // Render gas stats
+        function renderGasStats(data) {
+            const container = document.getElementById("gas-stats");
+            container.innerHTML = data
+            .map(function (row, rank) {
+                return `<li>#${rank + 1}: ${Math.round(row.avgGas)} gwei</li>`;
+            })
+            .join("");
+        }
+
+        // Get stats on page load
+        getStats();
+    </script>
+</body>
+</html>
+```
+
+## Step 3: Set Up Moralis Cloud Function
+
+1. **Log in to Moralis**: Go to the [Moralis website](https://moralis.io/) and create an account if you don't have one.
+
+2. **Create a New Server**:
+   - After logging in, create a new server (choose the free option) and note down the server URL and application ID.
+
+3. **Create the Cloud Function**:
+   - In the Moralis dashboard, navigate to the "Cloud Functions" section.
+   - Create a new Cloud Function and name it `getAvgGas`.
+   - Copy and paste the following code into the Cloud Function editor:
+
+```javascript
+Moralis.Cloud.define("getAvgGas", async function (request) {
+    const query = new Moralis.Query("EthTransactions");
+    const pipeline = [
+        {
+            group: {
+                objectId: "$from_address",
+                avgGas: { $avg: { $divide: ["$gas_price", 1000000000] } },
+            },
+        },
+        { sort: { avgGas: -1 } },
+        { limit: 10 },
+    ];
+    const results = await query.aggregate(pipeline, { useMasterKey: true });
+    return results;
+});
+```
+
+4. **Save the Cloud Function**.
+
+## Step 4: Run Your DApp
+
+1. **Start a Local Server** (if you installed `http-server`):
+   - In your terminal, navigate to your project folder and run:
+     ```bash
+     http-server
+     ```
+   - This will start a local server, usually at `http://localhost:8080`.
+
+2. **Open Your DApp**:
+   - Open your web browser and go to `http://localhost:8080/index.html` (or the appropriate URL based on your local server).
+
+## Step 5: Test Your DApp
+
+1. **Login with MetaMask**:
+   - Click the "Moralis Login" button. This will prompt you to connect your MetaMask wallet. Make sure you have MetaMask installed and set up with some Ethereum.
+
+2. **View Gas Stats**:
+   - After logging in, the DApp will fetch and display the average gas prices based on the transactions in the Moralis database.
+
+3. **Logout**:
+   - You can log out using the "Logout" button.

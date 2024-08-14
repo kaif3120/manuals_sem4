@@ -1,0 +1,57 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "state_var",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain/variable.sol": "Solidity_var_Test"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain/variable.sol": {
+			"keccak256": "0xe1ed046497062a30f54a21331f080b9bd912d045fd9ebd205255060f56a2a057",
+			"urls": [
+				"bzzr://2d58a14c6c3a107cd2d0d28e49898f8c8ca6bfa30d9c7b8e74e2d70647bd6f43"
+			]
+		}
+	},
+	"version": 1
+}
